@@ -75,6 +75,30 @@
         .buy-button:hover {
             background-color: #e64a19;
         }
+        
+        .case-packages, .coin-packages {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .package {
+            width: 22%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .package {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .package {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -86,83 +110,67 @@
         <section class="donation-packages">
             <h2>Донат пакеты</h2>
 
-            <!-- Властелин -->
             <div class="package" id="vlastelin">
                 <h3>Властелин - 2000 руб</h3>
                 <button onclick="showInfo('vlastelin')">Подробнее</button>
             </div>
-            <!-- Повелитель -->
             <div class="package" id="povelitel">
                 <h3>Повелитель - 1000 руб</h3>
                 <button onclick="showInfo('povelitel')">Подробнее</button>
             </div>
-            <!-- Фантом -->
             <div class="package" id="fantom">
                 <h3>Фантом - 899 руб</h3>
                 <button onclick="showInfo('fantom')">Подробнее</button>
             </div>
-            <!-- Император -->
             <div class="package" id="imperator">
                 <h3>Император - 650 руб</h3>
                 <button onclick="showInfo('imperator')">Подробнее</button>
             </div>
-            <!-- Легенда -->
             <div class="package" id="legenda">
                 <h3>Легенда - 499 руб</h3>
                 <button onclick="showInfo('legenda')">Подробнее</button>
             </div>
-            <!-- Визер -->
             <div class="package" id="wither">
                 <h3>Визер - 289 руб</h3>
                 <button onclick="showInfo('wither')">Подробнее</button>
             </div>
-            <!-- Суприм -->
             <div class="package" id="supreme">
                 <h3>Суприм - 139 руб</h3>
                 <button onclick="showInfo('supreme')">Подробнее</button>
             </div>
-            <!-- Воин -->
             <div class="package" id="warrior">
                 <h3>Воин - 69 руб</h3>
                 <button onclick="showInfo('warrior')">Подробнее</button>
             </div>
-
         </section>
 
         <section class="case-packages">
             <h2>Кейсы</h2>
 
-            <!-- Donate case -->
             <div class="package" id="donate-case">
                 <h3>Donate case - 119 руб</h3>
                 <button onclick="showInfo('donate-case')">Подробнее</button>
             </div>
-            <!-- Epic case -->
             <div class="package" id="epic-case">
                 <h3>Epic case - 630 руб</h3>
                 <button onclick="showInfo('epic-case')">Подробнее</button>
             </div>
-            <!-- Legend case -->
             <div class="package" id="legend-case">
                 <h3>Legend case - 999 руб</h3>
                 <button onclick="showInfo('legend-case')">Подробнее</button>
             </div>
-            <!-- Titul case -->
             <div class="package" id="titul-case">
                 <h3>Titul case - 40 руб</h3>
                 <button onclick="showInfo('titul-case')">Подробнее</button>
             </div>
-            <!-- Magic case -->
             <div class="package" id="magic-case">
                 <h3>Magic case - 50 руб</h3>
                 <button onclick="showInfo('magic-case')">Подробнее</button>
             </div>
-            <!-- Head case -->
             <div class="package" id="head-case">
                 <h3>Head case - 65 руб</h3>
                 <button onclick="showInfo('head-case')">Подробнее</button>
             </div>
-            <!-- Coin case -->
             <div class="package" id="coin-case">
                 <h3>Coin case - 60 руб</h3>
                 <button onclick="showInfo('coin-case')">Подробнее</button>
