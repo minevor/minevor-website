@@ -249,7 +249,7 @@
                 <button onclick="showModal('coin-500')">Подробнее</button>
             </div>
             <div class="package" id="coin-1000">
-                <h3>1000 coin - 550 руб</h3>
+                <h3>1000 coin - 500 руб</h3>
                 <button onclick="showModal('coin-1000')">Подробнее</button>
             </div>
         </section>
@@ -272,6 +272,7 @@
 
     <script>
         const packages = {
+            // Пакеты донатов
             vlastelin: {
                 title: "Властелин",
                 description: "Этот пакет дает вам уникальные привилегии на сервере.",
@@ -281,6 +282,9 @@
                     "Приоритетный доступ к серверам.",
                     "Получение VIP статуса.",
                     "Специальные эффекты для персонажа."
+                ],
+                commands: [
+                    "/vlastelin", "/exclusive-zone", "/vip-status"
                 ]
             },
             povelitel: {
@@ -291,6 +295,9 @@
                     "Эксклюзивные скины.",
                     "Приоритет в матчах.",
                     "Уникальный аватар."
+                ],
+                commands: [
+                    "/povelitel", "/exclusive-skin", "/avatar"
                 ]
             },
             fantom: {
@@ -300,6 +307,9 @@
                 perks: [
                     "Уникальные способности.",
                     "Доступ к скрытым регионам."
+                ],
+                commands: [
+                    "/fantom", "/stealth-mode"
                 ]
             },
             imperator: {
@@ -309,6 +319,9 @@
                 perks: [
                     "Доступ к улучшенным оружиям.",
                     "Глобальное управление сервером."
+                ],
+                commands: [
+                    "/imperator", "/army-control"
                 ]
             },
             legenda: {
@@ -318,6 +331,9 @@
                 perks: [
                     "Особые возможности для PvP.",
                     "Редкие предметы."
+                ],
+                commands: [
+                    "/legend", "/rare-items"
                 ]
             },
             wither: {
@@ -327,6 +343,9 @@
                 perks: [
                     "Доступ к особым атакам.",
                     "Усиленные эффекты разрушения."
+                ],
+                commands: [
+                    "/wither", "/destruction"
                 ]
             },
             supreme: {
@@ -336,6 +355,9 @@
                 perks: [
                     "Премиум скины.",
                     "Доступ к редким матчам."
+                ],
+                commands: [
+                    "/supreme", "/rare-matches"
                 ]
             },
             warrior: {
@@ -345,9 +367,145 @@
                 perks: [
                     "Основной бонус для PvP.",
                     "Получение дополнительных монет."
+                ],
+                commands: [
+                    "/warrior", "/coin-boost"
                 ]
             },
-            // Кейсы и монеты аналогично добавлены
+
+            // Кейсы
+            "donate-case": {
+                title: "Donate case",
+                description: "Этот кейс может дать вам уникальные предметы и бонусы.",
+                price: "119 руб",
+                contents: [
+                    "10 монет",
+                    "Редкий скин",
+                    "Уникальный аксессуар"
+                ]
+            },
+            "epic-case": {
+                title: "Epic case",
+                description: "Получите шанс выиграть эпические предметы и бонусы.",
+                price: "630 руб",
+                contents: [
+                    "50 монет",
+                    "Эпический скин",
+                    "Уникальная команда"
+                ]
+            },
+            "legend-case": {
+                title: "Legend case",
+                description: "Кейс с шансом получить легендарные предметы.",
+                price: "999 руб",
+                contents: [
+                    "100 монет",
+                    "Легендарный скин",
+                    "Доступ к эксклюзивным зонам"
+                ]
+            },
+            "titul-case": {
+                title: "Titul case",
+                description: "Этот кейс может дать вам титулы и уникальные бонусы.",
+                price: "40 руб",
+                contents: [
+                    "10 монет",
+                    "Титул 'Новичок'"
+                ]
+            },
+            "magic-case": {
+                title: "Magic case",
+                description: "Получите шанс выиграть магические бонусы.",
+                price: "50 руб",
+                contents: [
+                    "25 монет",
+                    "Магический эффект"
+                ]
+            },
+            "head-case": {
+                title: "Head case",
+                description: "Уникальный кейс для получения предметов для головы.",
+                price: "65 руб",
+                contents: [
+                    "50 монет",
+                    "Магический шлем"
+                ]
+            },
+            "coin-case": {
+                title: "Coin case",
+                description: "Получите шанс выиграть монеты.",
+                price: "60 руб",
+                contents: [
+                    "100 монет",
+                    "Уникальная монета"
+                ]
+            },
+
+            // Монеты
+            "coin-50": {
+                title: "50 coin",
+                description: "50 монет для покупки дополнительных привилегий.",
+                price: "33 руб",
+                contents: [
+                    "50 монет"
+                ]
+            },
+            "coin-70": {
+                title: "70 coin",
+                description: "70 монет для покупки дополнительных привилегий.",
+                price: "45 руб",
+                contents: [
+                    "70 монет"
+                ]
+            },
+            "coin-90": {
+                title: "90 coin",
+                description: "90 монет для покупки дополнительных привилегий.",
+                price: "60 руб",
+                contents: [
+                    "90 монет"
+                ]
+            },
+            "coin-100": {
+                title: "100 coin",
+                description: "100 монет для покупки дополнительных привилегий.",
+                price: "66 руб",
+                contents: [
+                    "100 монет"
+                ]
+            },
+            "coin-200": {
+                title: "200 coin",
+                description: "200 монет для покупки дополнительных привилегий.",
+                price: "110 руб",
+                contents: [
+                    "200 монет"
+                ]
+            },
+            "coin-300": {
+                title: "300 coin",
+                description: "300 монет для покупки дополнительных привилегий.",
+                price: "170 руб",
+                contents: [
+                    "300 монет"
+                ]
+            },
+            "coin-500": {
+                title: "500 coin",
+                description: "500 монет для покупки дополнительных привилегий.",
+                price: "280 руб",
+                contents: [
+                    "500 монет"
+                ]
+            },
+            "coin-1000": {
+                title: "1000 coin",
+                description: "1000 монет для покупки дополнительных привилегий.",
+                price: "500 руб",
+                contents: [
+                    "1000 монет"
+                ]
+            }
         };
 
         function showModal(packageId) {
@@ -357,8 +515,10 @@
                 <p><strong>Цена:</strong> ${packageData.price}</p>
                 <p><strong>Описание:</strong> ${packageData.description}</p>
                 <ul>
-                    ${packageData.perks.map(perk => `<li>${perk}</li>`).join('')}
+                    ${packageData.perks ? packageData.perks.map(perk => `<li>${perk}</li>`).join('') : ''}
+                    ${packageData.contents ? `<li><strong>Содержимое:</strong></li><ul>${packageData.contents.map(content => `<li>${content}</li>`).join('')}</ul>` : ''}
                 </ul>
+                ${packageData.commands ? `<h3>Доступные команды:</h3><ul>${packageData.commands.map(command => `<li>${command}</li>`).join('')}</ul>` : ''}
                 <button class="buy-button">Купить</button>
             `;
             document.getElementById("modalDetails").innerHTML = modalContent;
