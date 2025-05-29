@@ -120,9 +120,211 @@
     document.getElementById("donationModal").style.display = "block";
   }
 
-  const packages = 
-
+      const packages = {
+    warrior: {
+      title: "Воин",
+      price: "69 руб",
+      description: "Стань мощным воином на поле битвы!",
+      perks: ["лучший донат для новичка!"],
+      commands: ["/fly", "/feed", "/ec", "/seemoney", "/kit voin"]
+    },
+    supreme: {
+      title: "Суприм",
+      price: "139 руб",
+      description: "Пакет для настоящих мастеров игры!",
+      perks: ["для тех кто прошарился"],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid",
+        "/xyz", "/jump", "/weather", "/kit supreme"
+      ]
+    },
+    wither: {
+      title: "Визер",
+      price: "289 руб",
+      description: "Стань визером и управляй силами разрухи.",
+      perks: ["Доступ к креативу!"],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid",
+        "/xyz", "/jump", "/weather", "/gm (0/1/3)", "/repair",
+        "/kick", "/mute", "/kit wither"
+      ]
+    },
+    legenda: {
+      title: "Легенда",
+      price: "499 руб",
+      description: "Стань легендой и получи уникальные преимущества!",
+      perks: ["покажи насколько легендарней других"],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid", "/xyz",
+        "/jump", "/weather", "/gm (0/1/3)", "/repair", "/kick", "/mute",
+        "/giveitem", "/bantime", "/cc", "/unmute", "/time",
+        "/teleport", "/kit legend"
+      ]
+    },
+    imperator: {
+      title: "Император",
+      price: "650 руб",
+      description: "Получите статус императора и управляйте своей армией.",
+      perks: ["Глобальное превосходство над сервером."],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid", "/xyz",
+        "/jump", "/weather", "/gm (0/1/3)", "/repair", "/kick", "/mute",
+        "/giveitem", "/bantime", "/cc", "/unmute", "/time", "/teleport",
+        "/ban", "/unbantime", "/skin", "/banlist", "/pickup", "/unban",
+        "/kit imper"
+      ]
+    },
+    fantom: {
+      title: "Фантом",
+      price: "899 руб",
+      description: "Стать фантомом — получить лучшие возможности для сражений!",
+      perks: ["Уникальные способности."],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid", "/xyz", "/jump",
+        "/weather", "/gm (0/1/3)", "/repair", "/kick", "/mute", "/giveitem",
+        "/bantime", "/cc", "/unmute", "/time", "/teleport", "/ban",
+        "/unbantime", "/skin", "/banlist", "/pickup", "/unban", "/ban-ip",
+        "/topmoney", "/setwarp", "/delwarp", "/kit fantom"
+      ]
+    },
+    povelitel: {
+      title: "Повелитель",
+      price: "1000 руб",
+      description: "Этот донат дает вам дополнительные возможности для доминирования в игре.",
+      perks: ["Приоритет в матчах."],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid", "/xyz", "/jump",
+        "/weather", "/gm (0/1/3)", "/repair", "/kick", "/mute", "/giveitem",
+        "/bantime", "/cc", "/unmute", "/time", "/teleport", "/ban",
+        "/unbantime", "/skin", "/banlist", "/pickup", "/unban", "/ban-ip",
+        "/topmoney", "/setwarp", "/delwarp", "/saveinv", "/inv list",
+        "/freefly", "/effect", "/grant"
+      ]
+    },
+    vlastelin: {
+      title: "Властелин",
+      price: "2000 руб",
+      description: "Абсолютный контроль над сервером.",
+      perks: ["Вам доступно ВСЕ!"],
+      commands: [
+        "/fly", "/feed", "/ec", "/seemoney", "/itemid", "/xyz", "/jump",
+        "/weather", "/gm (0/1/3)", "/repair", "/kick", "/mute", "/giveitem",
+        "/bantime", "/cc", "/unmute", "/time", "/teleport", "/ban",
+        "/unbantime", "/skin", "/banlist", "/pickup", "/unban", "/ban-ip",
+        "/topmoney", "/setwarp", "/delwarp", "/saveinv", "/inv list",
+        "/freefly", "/effect", "/grant", "/clear", "/kill", "/freegm",
+        "/bonus", "/givemoney", "/stats", "/kit vlast"
+      ]
+    },
+    "donate-case": {
+      title: "Donate case",
+      description: "Это самый дешевый, но ценный кейс с донатами.",
+      price: "119 руб",
+      contents: ["воин", "суприм", "визер", "легенда"]
+    },
+    "epic-case": {
+      title: "Epic case",
+      description: "100% окуп",
+      price: "630 руб",
+      contents: ["легенда", "император", "фантом"]
+    },
+    "legend-case": {
+      title: "Legend case",
+      description: "Кейс с которого можно выбить 3 лучших доната!",
+      price: "999 руб",
+      contents: ["фантом", "повелитель", "властелин"]
+    },
+    "titul-case": {
+      title: "Titul case",
+      description: "Лучшие титулы сервера",
+      price: "40 руб",
+      contents: [
+        "езка","PvP","крутой","софт","фермер","богатый","ливер","трапер",
+        "таргет","1х3","грифер","ZXC","GG","qq","24/7","BAN","OLD","EZ","skill","absolute"
+      ]
+    },
+    "magic-case": {
+      title: "Magic case",
+      description: "Получите шанс выбить лучшие руны",
+      price: "50 руб",
+      contents: [
+        "rune speed 1","rune speed 2","rune power 1","rune power 2",
+        "rune fire","rune jump 1","rune jump 2","rune health","rune invis"
+      ]
+    },
+    "head-case": {
+      title: "Head case",
+      description: "Уникальный кейс с головами",
+      price: "65 руб",
+      contents: [
+        "голова зомби","голова крипера","голова дракона",
+        "голова визера","голова скелета","голова стива"
+      ]
+    },
+    "coin-case": {
+      title: "Coin case",
+      description: "Выиграй монеты!",
+      price: "60 руб",
+      contents: ["10 coin","30 coin","50 coin","70 coin","100 coin","150 coin","200 coin","300 coin"]
+    },
+    "coin-50": {
+      title: "50 coin",
+      description: "50 коинов на твой аккаунт.",
+      price: "33 руб",
+      contents: ["50 монет"]
+    },
+    "coin-70": {
+      title: "70 coin",
+      description: "70 коинов на твой аккаунт.",
+      price: "45 руб",
+      contents: ["70 монет"]
+    },
+    "coin-90": {
+      title: "90 coin",
+      description: "90 коинов на твой аккаунт.",
+      price: "60 руб",
+      contents: ["90 монет"]
+    },
+    "coin-100": {
+      title: "100 coin",
+      description: "100 коинов на твой аккаунт.",
+      price: "66 руб",
+      contents: ["100 монет"]
+    },
+    "coin-200": {
+      title: "200 coin",
+      description: "200 коинов на твой аккаунт.",
+      price: "110 руб",
+      contents: ["200 монет"]
+    },
+    "coin-300": {
+      title: "300 coin",
+      description: "300 коинов на твой аккаунт.",
+      price: "170 руб",
+      contents: ["300 монет"]
+    },
+    "coin-500": {
+      title: "500 coin",
+      description: "500 коинов на твой аккаунт.",
+      price: "280 руб",
+      contents: ["500 монет"]
+    },
+    "coin-1000": {
+      title: "1000 coin",
+      description: "1000 коинов на твой аккаунт.",
+      price: "550 руб",
+      contents: ["1000 монет"]
+    },
+    "coin-3000": {
+      title: "3000 coin",
+      description: "3000 коинов на твой аккаунт.",
+      price: "1500 руб",
+      contents: ["3000 монет"]
+    }
+  };
 </script>
+
+
 
 </body>
 </html>
