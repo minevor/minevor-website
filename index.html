@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Донат сервер Minevor</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем внешний стиль -->
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>Добро пожаловать на сервер Minevor</h1>
+            <p>Получите уникальные привилегии и станьте частью нашего мира! Сделайте свой опыт еще более увлекательным.</p>
+        </div>
+    </header>
+
+    <section id="donate-packages">
+        <h2>Доступные пакеты доната</h2>
+        <div class="donation-packages-container">
+            <div class="package" id="vlastelin">
+                <h3>Властелин - 2000 руб</h3>
+                <ul>
+                    <li>/clear - очистить инвентарь</li>
+                    <li>/kill - убить себя</li>
+                    <li>/freegm - выдать другу креатив</li>
+                    <!-- Остальные команды... -->
+                </ul>
+                <button class="donate-btn" onclick="donate('vlastelin')">Пожертвовать</button>
+            </div>
+
+            <div class="package" id="povelitel">
+                <h3>Повелитель - 1000 руб</h3>
+                <ul>
+                    <li>/saveinv - сохранить инвентарь</li>
+                    <li>/inv list - список сохраненных инвентарей</li>
+                    <!-- Остальные команды... -->
+                </ul>
+                <button class="donate-btn" onclick="donate('povelitel')">Пожертвовать</button>
+            </div>
+
+            <!-- Другие пакеты... -->
+        </div>
+    </section>
+
+    <section id="cases">
+        <h2>Кейсы</h2>
+        <div class="case-container">
+            <div class="case" id="donate-case">
+                <h3>Donate Case - 119 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Воин</li>
+                    <li>Суприм</li>
+                    <li>Визер</li>
+                    <li>Легенда</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('donate-case')">Купить</button>
+            </div>
+
+            <div class="case" id="epic-case">
+                <h3>Epic Case - 630 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Легенда</li>
+                    <li>Император</li>
+                    <li>Фантом</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('epic-case')">Купить</button>
+            </div>
+
+            <!-- Другие кейсы... -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Minevor - Все права защищены</p>
+    </footer>
+
+    <script>
+        function donate(packageName) {
+            // Замените этот код на обработку запроса с оплатой через Enot.io
+            alert('Вы выбрали пакет: ' + packageName);
+        }
+    </script>
+</body>
+</html>
