@@ -3,237 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Донат сервер Minevor</title>
+    <title>Сайт донатов</title>
     <style>
-        /* Основной стиль для сайта */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
         }
 
         header {
             background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            color: white;
             text-align: center;
+            padding: 20px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
+        h1 {
+            margin: 0;
         }
 
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
+        main {
+            padding: 20px;
         }
 
         section {
-            padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 1200px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
         h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .donation-packages-container, .case-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .package, .case {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 10px;
-            width: 300px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .package h3, .case h3 {
-            font-size: 1.5rem;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
-        .package ul, .case ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .package li, .case li {
+        .package {
+            background-color: #fff;
+            padding: 15px;
             margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .donate-btn {
+        button {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
         }
 
-        .donate-btn:hover {
+        button:hover {
             background-color: #45a049;
         }
 
         footer {
-            background-color: #333;
-            color: white;
             text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            margin-top: 20px;
+        }
+
+        .buy-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background-color: #e64a19;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="header-container">
-            <h1>Добро пожаловать на сервер Minevor</h1>
-            <p>Получите уникальные привилегии и станьте частью нашего мира! Сделайте свой опыт еще более увлекательным.</p>
-        </div>
+        <h1>Сайт донатов</h1>
     </header>
 
-    <section id="donate-packages">
-        <h2>Доступные пакеты доната</h2>
-        <div class="donation-packages-container">
+    <main>
+        <section class="donation-packages">
+            <h2>Донат пакеты</h2>
+
+            <!-- Властелин -->
             <div class="package" id="vlastelin">
                 <h3>Властелин - 2000 руб</h3>
-                <ul>
-                    <li>/clear - очистить инвентарь</li>
-                    <li>/kill - убить себя</li>
-                    <li>/freegm - выдать другу креатив</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('vlastelin')">Купить</button>
+                <button onclick="showInfo('vlastelin')">Подробнее</button>
             </div>
-
+            <!-- Повелитель -->
             <div class="package" id="povelitel">
                 <h3>Повелитель - 1000 руб</h3>
-                <ul>
-                    <li>/saveinv - сохранить инвентарь</li>
-                    <li>/inv list - список сохраненных инвентарей</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('povelitel')">Купить</button>
+                <button onclick="showInfo('povelitel')">Подробнее</button>
             </div>
-
-            <div class="package" id="phantom">
+            <!-- Фантом -->
+            <div class="package" id="fantom">
                 <h3>Фантом - 899 руб</h3>
-                <ul>
-                    <li>/ban-ip - заблокировать игрока по айпи</li>
-                    <li>/topmoney - узнать топ по балансу</li>
-                    <li>/setwarp - установить варп</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('phantom')">Купить</button>
+                <button onclick="showInfo('fantom')">Подробнее</button>
             </div>
-
+            <!-- Император -->
             <div class="package" id="imperator">
                 <h3>Император - 650 руб</h3>
-                <ul>
-                    <li>/ban - заблокировать игрока на сервере</li>
-                    <li>/unbantime - разблокировать игрока</li>
-                    <li>/skin - украсть скин у игрока</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('imperator')">Купить</button>
+                <button onclick="showInfo('imperator')">Подробнее</button>
             </div>
-
-            <div class="package" id="legend">
+            <!-- Легенда -->
+            <div class="package" id="legenda">
                 <h3>Легенда - 499 руб</h3>
-                <ul>
-                    <li>/giveitem - выдать предмет</li>
-                    <li>/bantime - забанить игрока на время</li>
-                    <li>/cc - очистить чат</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('legend')">Купить</button>
+                <button onclick="showInfo('legenda')">Подробнее</button>
             </div>
-
+            <!-- Визер -->
             <div class="package" id="wither">
                 <h3>Визер - 289 руб</h3>
-                <ul>
-                    <li>/gm (0/1/3) - креатив</li>
-                    <li>/repair - починить предмет</li>
-                    <li>/kick - выгнать игрока с сервера</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('wither')">Купить</button>
+                <button onclick="showInfo('wither')">Подробнее</button>
             </div>
-
+            <!-- Суприм -->
             <div class="package" id="supreme">
                 <h3>Суприм - 139 руб</h3>
-                <ul>
-                    <li>/itemid - узнать айди предмета</li>
-                    <li>/xyz - узнать координаты</li>
-                    <li>/jump - подпрыгнуть до небес</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('supreme')">Купить</button>
+                <button onclick="showInfo('supreme')">Подробнее</button>
             </div>
-
+            <!-- Воин -->
             <div class="package" id="warrior">
                 <h3>Воин - 69 руб</h3>
-                <ul>
-                    <li>/fly - режим полета</li>
-                    <li>/feed - поесть</li>
-                    <li>/ec - эндер-сундук</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('warrior')">Купить</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="cases">
-        <h2>Кейсы</h2>
-        <div class="case-container">
-            <div class="case" id="donate-case">
-                <h3>Donate Case - 119 руб</h3>
-                <p>Содержимое:</p>
-                <ul>
-                    <li>Воин</li>
-                    <li>Суприм</li>
-                    <li>Визер</li>
-                    <li>Легенда</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('donate-case')">Купить</button>
+                <button onclick="showInfo('warrior')">Подробнее</button>
             </div>
 
-            <div class="case" id="epic-case">
-                <h3>Epic Case - 630 руб</h3>
-                <p>Содержимое:</p>
-                <ul>
-                    <li>Легенда</li>
-                    <li>Император</li>
-                    <li>Фантом</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('epic-case')">Купить</button>
-            </div>
+        </section>
 
-            <div class="case" id="legend-case">
-                <h3>Legend Case - 999 руб</h3>
-                <p>Содержимое:</p>
-                <ul>
-                    <li>Фантом</li>
-                    <li>Повелитель</li>
-                    <li>Властелин</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('legend-case')">Купить</button>
-            </div>
+        <section class="case-packages">
+            <h2>Кейсы</h2>
 
-            <div class="case" id="titul-case">
-                <h3>Titul Case - 40 руб</h3>
-                <p>Содержимое:</p>
-                <ul>
-                    <li>Езка</li>
-                    <li>PvP</
+            <!-- Donate case -->
+            <div class="package" id="donate-case">
+                <h3>Donate case - 119 руб</h3>
+                <button onclick="showInfo('donate-case')">Подробнее</button>
+            </div>
+            <!-- Epic case -->
+            <div class="package" id="epic-case">
+                <h3>Epic case - 630 руб</h3>
+                <button onclick="showInfo('epic-case')">Подробнее</button>
+            </div>
+            <!-- Legend case -->
+            <div class="package" id="legend-case">
+                <h3>Legend case - 999 руб</h3>
+                <button onclick="showInfo('legend-case')">Подробнее</button>
+            </div>
+            <!-- Titul case -->
+            <div class="package" id="titul-case">
+                <h3>Titul case - 40 руб</h3>
+                <button onclick="showInfo('titul-case')">Подробнее</button>
+            </div>
+            <!-- Magic case -->
+            <div class="package" id="magic-case">
+                <h3>Magic case - 50 руб</h3>
+                <button onclick="showInfo('magic-case')">Подробнее</button>
+            </div>
+            <!-- Head case -->
+            <div class="package" id="head-case">
+                <h3>Head case - 65 руб</h3>
+                <button onclick="showInfo('head-case')">Подробнее</button>
+            </div>
+            <!-- Coin case -->
+            <div class="package" id="coin-case">
+                <h3>Coin case - 60 руб</h3>
+                <button onclick="showInfo('coin-case')">Подробнее</button>
+            </div>
+        </section>
+
+        <section class="coin-packages">
+            <h2>Монеты</h2>
+
+            <div class="package" id="coin-50">
+                <h3>50 coin - 33 руб</h3>
+                <button onclick="showInfo('coin-50')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-70">
+                <h3>70 coin - 45 руб</h3>
+                <button onclick="showInfo('coin-70')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-90">
+                <h3>90 coin - 60 руб</h3>
+                <button onclick="showInfo('coin-90')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-100">
+                <h3>100 coin - 66 руб</h3>
+                <button onclick="showInfo('coin-100')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-200">
+                <h3>200 coin - 110 руб</h3>
+                <button onclick="showInfo('coin-200')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-300">
+                <h3>300 coin - 170 руб</h3>
+                <button onclick="showInfo('coin-300')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-500">
+                <h3>500 coin - 280 руб</h3>
+                <button onclick="showInfo('coin-500')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-1000">
+                <h3>1000 coin - 550 руб</h3>
+                <button onclick="showInfo('coin-1000')">Подробнее</button>
+            </div>
+            <div class="package" id="coin-3000">
+                <h3>3000 coin - 1500 руб</h3>
+                <button onclick="showInfo('coin-3000')">Подробнее</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <button class="buy-button">Купить</button>
+    </footer>
+
+    <script>
+        function showInfo(packageId) {
+            const descriptions = {
+                'vlastelin': `
+                    /clear - очистить инвентарь 
+                    /kill - убить себя 
+                    /freegm - выдать другу креатив 
+                    /bonus (раз на 7 дней) - получить уникальный бонус 
+                    /givemoney (50к, каждые 6 часов) - выдать 50000 монет
+                    /stats - проверить статистику 
+                    /saveinv - сохранить инвентарь
+                    /inv list - список сохраненных инвентарей 
+                    /freefly - выдать флай игроку
+                    /effect - выдать эффект 
+                    /grant - выдать другу визера
+                `,
+                // Добавь сюда описание для других пакетов
+                'povelitel': 'Описание для Повелителя...',
+                'fantom': 'Описание для Фантома...',
+                'imperator': 'Описание для Императора...',
+                'legenda': 'Описание для Легенды...',
+                'wither': 'Описание для Визера...',
+                'supreme': 'Описание для Суприма...',
+                'warrior': 'Описание для Воина...',
+                // кейсы
+                'donate-case': 'Описание для Donate case...',
+                'epic-case': 'Описание для Epic case...',
+                'legend-case': 'Описание для Legend case...',
+                'titul-case': 'Описание для Titul case...',
+                'magic-case': 'Описание для Magic case...',
+                'head-case': 'Описание для Head case...',
+                'coin-case': 'Описание для Coin case...',
+                // монеты
+                'coin-50': 'Описание для 50 coin...',
+                'coin-70': 'Описание для 70 coin...',
+                'coin-90': 'Описание для 90 coin...',
+                'coin-100': 'Описание для 100 coin...',
+                'coin-200': 'Описание для 200 coin...',
+                'coin-300': 'Описание для 300 coin...',
+                'coin-500': 'Описание для 500 coin...',
+                'coin-1000': 'Описание для 1000 coin...',
+                'coin-3000': 'Описание для 3000 coin...'
+            };
+
+            alert(descriptions[packageId] || 'Описание не найдено');
+        }
+    </script>
+</body>
+</html>
