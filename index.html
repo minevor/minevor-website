@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +47,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            justify-content: space-around;
         }
 
         .package,
@@ -55,10 +55,12 @@
             background-color: white;
             padding: 20px;
             border: 1px solid #ddd;
-            width: calc(33% - 20px);
+            width: 100%;
+            max-width: 350px; /* Ограничиваем максимальную ширину */
             box-sizing: border-box;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
         }
 
         .package h3,
@@ -100,9 +102,14 @@
             background-color: #333;
             color: white;
         }
+
+        @media (max-width: 768px) {
+            .package, .case {
+                width: 100%; /* На мобильных устройствах элементы будут занимать всю ширину */
+            }
+        }
     </style>
 </head>
-
 <body>
 
     <header>
@@ -142,87 +149,95 @@
                 </ul>
                 <button class="donate-btn" onclick="donate('povelitel')">Пожертвовать</button>
             </div>
-
-            <!-- Пакет "Фантом" -->
-            <div class="package" id="fantom">
-                <h3>Фантом - 899 руб</h3>
-                <ul>
-                    <li>/ban-ip - заблокировать игрока по айпи</li>
-                    <li>/topmoney - узнать топ по балансу</li>
-                    <li>/setwarp - установить варп</li>
-                    <li>/delwarp - удалить варп</li>
-                    <li>/ban - заблокировать игрока на сервере</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('fantom')">Пожертвовать</button>
-            </div>
-
-            <!-- Пакет "Император" -->
-            <div class="package" id="imperator">
-                <h3>Император - 650 руб</h3>
-                <ul>
-                    <li>/ban - заблокировать игрока на сервере</li>
-                    <li>/unbantime - разблокировать игрока</li>
-                    <li>/skin - украсть скин у игрока</li>
-                    <li>/banlist - список забаненных игроков</li>
-                    <li>/pickup - настроить подбор ресурсов</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('imperator')">Пожертвовать</button>
-            </div>
-
-            <!-- Пакет "Легенда" -->
-            <div class="package" id="legenda">
-                <h3>Легенда - 499 руб</h3>
-                <ul>
-                    <li>/giveitem - выдать предмет</li>
-                    <li>/bantime - забанить игрока на время</li>
-                    <li>/cc - очистить чат</li>
-                    <li>/unmute - разблокировать игрока в чате</li>
-                    <li>/time - менять время суток (день/ночь)</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('legenda')">Пожертвовать</button>
-            </div>
-
-            <!-- Пакет "Визер" -->
-            <div class="package" id="wither">
-                <h3>Визер - 289 руб</h3>
-                <ul>
-                    <li>/gm (0/1/3) - креатив</li>
-                    <li>/repair - починить предмет</li>
-                    <li>/kick - выгнать игрока с сервера</li>
-                    <li>/mute - заблокировать игрока в чате</li>
-                    <li>/itemid - узнать айди предмета</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('wither')">Пожертвовать</button>
-            </div>
-
-            <!-- Пакет "Суприм" -->
-            <div class="package" id="supreme">
-                <h3>Суприм - 139 руб</h3>
-                <ul>
-                    <li>/itemid - узнать айди предмета</li>
-                    <li>/xyz - узнать координаты</li>
-                    <li>/jump - подпрыгнуть до небес</li>
-                    <li>/weather - сменить погоду</li>
-                    <li>/fly - режим полета</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('supreme')">Пожертвовать</button>
-            </div>
-
-            <!-- Пакет "Воин" -->
-            <div class="package" id="voin">
-                <h3>Воин - 69 руб</h3>
-                <ul>
-                    <li>/fly - режим полета</li>
-                    <li>/feed - поесть</li>
-                    <li>/ec - эндер-сундук</li>
-                    <li>/seemoney - посмотреть баланс игрока</li>
-                </ul>
-                <button class="donate-btn" onclick="donate('voin')">Пожертвовать</button>
-            </div>
         </div>
     </section>
 
     <!-- Секция с кейсами -->
     <section id="cases">
         <h2>Кейсы</h2>
-        <div class="
+        <div class="case-container">
+            <!-- Кейс "Donate Case" -->
+            <div class="case" id="donate-case">
+                <h3>Donate Case - 119 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Воин</li>
+                    <li>Суприм</li>
+                    <li>Визер</li>
+                    <li>Легенда</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('donate-case')">Купить</button>
+            </div>
+
+            <!-- Кейс "Epic Case" -->
+            <div class="case" id="epic-case">
+                <h3>Epic Case - 630 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Легенда</li>
+                    <li>Император</li>
+                    <li>Фантом</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('epic-case')">Купить</button>
+            </div>
+
+            <!-- Кейс "Legend Case" -->
+            <div class="case" id="legend-case">
+                <h3>Legend Case - 999 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Фантом</li>
+                    <li>Повелитель</li>
+                    <li>Властелин</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('legend-case')">Купить</button>
+            </div>
+
+            <!-- Кейс "Titul Case" -->
+            <div class="case" id="titul-case">
+                <h3>Titul Case - 40 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Езка</li>
+                    <li>PvP</li>
+                    <li>Крутой</li>
+                    <li>Софт</li>
+                    <li>Фермер</li>
+                    <li>Богатый</li>
+                    <li>Ливер</li>
+                    <li>Трапер</li>
+                    <li>Таргет</li>
+                    <li>1х3</li>
+                    <li>Грифер</li>
+                    <li>ZXC</li>
+                    <li>GG</li>
+                    <li>qq</li>
+                    <li>24/7</li>
+                    <li>BAN</li>
+                    <li>OLD</li>
+                    <li>EZ</li>
+                    <li>Skill</li>
+                    <li>Absolute</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('titul-case')">Купить</button>
+            </div>
+
+            <!-- Кейс "Magic Case" -->
+            <div class="case" id="magic-case">
+                <h3>Magic Case - 50 руб</h3>
+                <p>Содержимое:</p>
+                <ul>
+                    <li>Rune Speed 1</li>
+                    <li>Rune Speed 2</li>
+                    <li>Rune Power 1</li>
+                    <li>Rune Power 2</li>
+                    <li>Rune Fire</li>
+                    <li>Rune Jump 1</li>
+                    <li>Rune Jump 2</li>
+                    <li>Rune Health</li>
+                    <li>Rune Invisi</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('magic-case')">Купить</button>
+            </div>
+
+            <!-- К
