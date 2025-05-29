@@ -260,273 +260,147 @@
     </footer>
 
     <!-- Модальное окно -->
-    <div id="donationModal" class="modal">
+    <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Детали пакета</h2>
-            <div id="modalDetails">
-                <!-- Динамически загружаемая информация -->
-            </div>
+            <h2>Подробнее о пакете</h2>
+            <div id="modal-description"></div>
         </div>
     </div>
 
     <script>
         const packages = {
-            // Пакеты донатов
-            vlastelin: {
+            "vlastelin": {
                 title: "Властелин",
-                description: "Этот пакет дает вам уникальные привилегии на сервере.",
                 price: "2000 руб",
-                perks: [
-                    "Доступ к эксклюзивным зонам.",
-                    "Приоритетный доступ к серверам.",
-                    "Получение VIP статуса.",
-                    "Специальные эффекты для персонажа."
-                ],
-                commands: [
-                    "/vlastelin", "/exclusive-zone", "/vip-status"
-                ]
+                description: "Пакет для самых сильных и богатых игроков. Дает дополнительные привилегии."
             },
-            povelitel: {
+            "povelitel": {
                 title: "Повелитель",
-                description: "Этот пакет дает вам дополнительные возможности для доминирования в игре.",
                 price: "1000 руб",
-                perks: [
-                    "Эксклюзивные скины.",
-                    "Приоритет в матчах.",
-                    "Уникальный аватар."
-                ],
-                commands: [
-                    "/povelitel", "/exclusive-skin", "/avatar"
-                ]
+                description: "Пакет для опытных игроков, дающий бонусы для более эффективной игры."
             },
-            fantom: {
+            "fantom": {
                 title: "Фантом",
-                description: "Стать фантомом на сервере — получить лучшие возможности для сражений!",
                 price: "899 руб",
-                perks: [
-                    "Уникальные способности.",
-                    "Доступ к скрытым регионам."
-                ],
-                commands: [
-                    "/fantom", "/stealth-mode"
-                ]
+                description: "Пакет с особыми привилегиями, идеальный выбор для фанатов."
             },
-            imperator: {
+            "imperator": {
                 title: "Император",
-                description: "Получите статус императора и управляйте своей армией.",
                 price: "650 руб",
-                perks: [
-                    "Доступ к улучшенным оружиям.",
-                    "Глобальное управление сервером."
-                ],
-                commands: [
-                    "/imperator", "/army-control"
-                ]
+                description: "Базовый пакет для начинающих, но с отличными бонусами."
             },
-            legenda: {
+            "legenda": {
                 title: "Легенда",
-                description: "Стань легендой и получи уникальные преимущества!",
                 price: "499 руб",
-                perks: [
-                    "Особые возможности для PvP.",
-                    "Редкие предметы."
-                ],
-                commands: [
-                    "/legend", "/rare-items"
-                ]
+                description: "Дает уникальные бонусы и статус."
             },
-            wither: {
+            "wither": {
                 title: "Визер",
-                description: "Стань визером и управляй силами разрухи.",
                 price: "289 руб",
-                perks: [
-                    "Доступ к особым атакам.",
-                    "Усиленные эффекты разрушения."
-                ],
-                commands: [
-                    "/wither", "/destruction"
-                ]
+                description: "Базовый пакет с возможностью получения крутых бонусов."
             },
-            supreme: {
+            "supreme": {
                 title: "Суприм",
-                description: "Пакет для настоящих мастеров игры!",
                 price: "139 руб",
-                perks: [
-                    "Премиум скины.",
-                    "Доступ к редким матчам."
-                ],
-                commands: [
-                    "/supreme", "/rare-matches"
-                ]
+                description: "Пакет для новых игроков с дополнительными возможностями."
             },
-            warrior: {
+            "warrior": {
                 title: "Воин",
-                description: "Стань мощным воином на поле битвы!",
                 price: "69 руб",
-                perks: [
-                    "Основной бонус для PvP.",
-                    "Получение дополнительных монет."
-                ],
-                commands: [
-                    "/warrior", "/coin-boost"
-                ]
+                description: "Базовый пакет для новичков."
             },
-
-            // Кейсы
             "donate-case": {
                 title: "Donate case",
-                description: "Этот кейс может дать вам уникальные предметы и бонусы.",
                 price: "119 руб",
-                contents: [
-                    "10 монет",
-                    "Редкий скин",
-                    "Уникальный аксессуар"
-                ]
+                description: "Кейс с бонусами для донаторов."
             },
             "epic-case": {
                 title: "Epic case",
-                description: "Получите шанс выиграть эпические предметы и бонусы.",
                 price: "630 руб",
-                contents: [
-                    "50 монет",
-                    "Эпический скин",
-                    "Уникальная команда"
-                ]
+                description: "Очень редкий кейс, в котором можно получить эксклюзивные предметы."
             },
             "legend-case": {
                 title: "Legend case",
-                description: "Кейс с шансом получить легендарные предметы.",
                 price: "999 руб",
-                contents: [
-                    "100 монет",
-                    "Легендарный скин",
-                    "Доступ к эксклюзивным зонам"
-                ]
+                description: "Самый ценный кейс на сайте."
             },
             "titul-case": {
                 title: "Titul case",
-                description: "Этот кейс может дать вам титулы и уникальные бонусы.",
                 price: "40 руб",
-                contents: [
-                    "10 монет",
-                    "Титул 'Новичок'"
-                ]
+                description: "Маленький кейс с шансом получить титулы."
             },
             "magic-case": {
                 title: "Magic case",
-                description: "Получите шанс выиграть магические бонусы.",
                 price: "50 руб",
-                contents: [
-                    "25 монет",
-                    "Магический эффект"
-                ]
+                description: "Магический кейс, дающий случайные бонусы."
             },
             "head-case": {
                 title: "Head case",
-                description: "Уникальный кейс для получения предметов для головы.",
                 price: "65 руб",
-                contents: [
-                    "50 монет",
-                    "Магический шлем"
-                ]
+                description: "Кейс с шансом на получение крутых предметов."
             },
             "coin-case": {
                 title: "Coin case",
-                description: "Получите шанс выиграть монеты.",
                 price: "60 руб",
-                contents: [
-                    "100 монет",
-                    "Уникальная монета"
-                ]
+                description: "Кейс с шансом на получение монет."
             },
-
-            // Монеты
             "coin-50": {
                 title: "50 coin",
-                description: "50 монет для покупки дополнительных привилегий.",
                 price: "33 руб",
-                contents: [
-                    "50 монет"
-                ]
+                description: "Небольшое количество монет для начальных покупок."
             },
             "coin-70": {
                 title: "70 coin",
-                description: "70 монет для покупки дополнительных привилегий.",
                 price: "45 руб",
-                contents: [
-                    "70 монет"
-                ]
+                description: "Дополнительные монеты для увеличения возможностей."
             },
             "coin-90": {
                 title: "90 coin",
-                description: "90 монет для покупки дополнительных привилегий.",
                 price: "60 руб",
-                contents: [
-                    "90 монет"
-                ]
+                description: "Скоростное пополнение монет для активных игроков."
             },
             "coin-100": {
                 title: "100 coin",
-                description: "100 монет для покупки дополнительных привилегий.",
                 price: "66 руб",
-                contents: [
-                    "100 монет"
-                ]
+                description: "Пакет из 100 монет для быстрого старта."
             },
             "coin-200": {
                 title: "200 coin",
-                description: "200 монет для покупки дополнительных привилегий.",
                 price: "110 руб",
-                contents: [
-                    "200 монет"
-                ]
+                description: "Большое количество монет для длительной игры."
             },
             "coin-300": {
                 title: "300 coin",
-                description: "300 монет для покупки дополнительных привилегий.",
                 price: "170 руб",
-                contents: [
-                    "300 монет"
-                ]
+                description: "Отличный выбор для серьезных игроков."
             },
             "coin-500": {
                 title: "500 coin",
-                description: "500 монет для покупки дополнительных привилегий.",
                 price: "280 руб",
-                contents: [
-                    "500 монет"
-                ]
+                description: "Множество монет для максимальной выгоды."
             },
             "coin-1000": {
                 title: "1000 coin",
-                description: "1000 монет для покупки дополнительных привилегий.",
                 price: "500 руб",
-                contents: [
-                    "1000 монет"
-                ]
+                description: "Огромное количество монет для активных донаторов."
             }
         };
 
         function showModal(packageId) {
             const packageData = packages[packageId];
-            let modalContent = `
-                <h2>${packageData.title}</h2>
-                <p><strong>Цена:</strong> ${packageData.price}</p>
-                <p><strong>Описание:</strong> ${packageData.description}</p>
-                <ul>
-                    ${packageData.perks ? packageData.perks.map(perk => `<li>${perk}</li>`).join('') : ''}
-                    ${packageData.contents ? `<li><strong>Содержимое:</strong></li><ul>${packageData.contents.map(content => `<li>${content}</li>`).join('')}</ul>` : ''}
-                </ul>
-                ${packageData.commands ? `<h3>Доступные команды:</h3><ul>${packageData.commands.map(command => `<li>${command}</li>`).join('')}</ul>` : ''}
-                <button class="buy-button">Купить</button>
-            `;
-            document.getElementById("modalDetails").innerHTML = modalContent;
-            document.getElementById("donationModal").style.display = "block";
+            if (packageData) {
+                document.getElementById('modal-description').innerHTML = `
+                    <h3>${packageData.title}</h3>
+                    <p><strong>Цена:</strong> ${packageData.price}</p>
+                    <p><strong>Описание:</strong> ${packageData.description}</p>
+                `;
+                document.getElementById('modal').style.display = "block";
+            }
         }
 
         function closeModal() {
-            document.getElementById("donationModal").style.display = "none";
+            document.getElementById('modal').style.display = "none";
         }
     </script>
 </body>
