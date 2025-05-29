@@ -75,7 +75,7 @@
         .buy-button:hover {
             background-color: #e64a19;
         }
-        
+
         .case-packages, .coin-packages {
             display: flex;
             justify-content: space-around;
@@ -99,6 +99,46 @@
                 width: 90%;
             }
         }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -112,35 +152,35 @@
 
             <div class="package" id="vlastelin">
                 <h3>Властелин - 2000 руб</h3>
-                <button onclick="showInfo('vlastelin')">Подробнее</button>
+                <button onclick="showModal('vlastelin')">Подробнее</button>
             </div>
             <div class="package" id="povelitel">
                 <h3>Повелитель - 1000 руб</h3>
-                <button onclick="showInfo('povelitel')">Подробнее</button>
+                <button onclick="showModal('povelitel')">Подробнее</button>
             </div>
             <div class="package" id="fantom">
                 <h3>Фантом - 899 руб</h3>
-                <button onclick="showInfo('fantom')">Подробнее</button>
+                <button onclick="showModal('fantom')">Подробнее</button>
             </div>
             <div class="package" id="imperator">
                 <h3>Император - 650 руб</h3>
-                <button onclick="showInfo('imperator')">Подробнее</button>
+                <button onclick="showModal('imperator')">Подробнее</button>
             </div>
             <div class="package" id="legenda">
                 <h3>Легенда - 499 руб</h3>
-                <button onclick="showInfo('legenda')">Подробнее</button>
+                <button onclick="showModal('legenda')">Подробнее</button>
             </div>
             <div class="package" id="wither">
                 <h3>Визер - 289 руб</h3>
-                <button onclick="showInfo('wither')">Подробнее</button>
+                <button onclick="showModal('wither')">Подробнее</button>
             </div>
             <div class="package" id="supreme">
                 <h3>Суприм - 139 руб</h3>
-                <button onclick="showInfo('supreme')">Подробнее</button>
+                <button onclick="showModal('supreme')">Подробнее</button>
             </div>
             <div class="package" id="warrior">
                 <h3>Воин - 69 руб</h3>
-                <button onclick="showInfo('warrior')">Подробнее</button>
+                <button onclick="showModal('warrior')">Подробнее</button>
             </div>
         </section>
 
@@ -149,31 +189,31 @@
 
             <div class="package" id="donate-case">
                 <h3>Donate case - 119 руб</h3>
-                <button onclick="showInfo('donate-case')">Подробнее</button>
+                <button onclick="showModal('donate-case')">Подробнее</button>
             </div>
             <div class="package" id="epic-case">
                 <h3>Epic case - 630 руб</h3>
-                <button onclick="showInfo('epic-case')">Подробнее</button>
+                <button onclick="showModal('epic-case')">Подробнее</button>
             </div>
             <div class="package" id="legend-case">
                 <h3>Legend case - 999 руб</h3>
-                <button onclick="showInfo('legend-case')">Подробнее</button>
+                <button onclick="showModal('legend-case')">Подробнее</button>
             </div>
             <div class="package" id="titul-case">
                 <h3>Titul case - 40 руб</h3>
-                <button onclick="showInfo('titul-case')">Подробнее</button>
+                <button onclick="showModal('titul-case')">Подробнее</button>
             </div>
             <div class="package" id="magic-case">
                 <h3>Magic case - 50 руб</h3>
-                <button onclick="showInfo('magic-case')">Подробнее</button>
+                <button onclick="showModal('magic-case')">Подробнее</button>
             </div>
             <div class="package" id="head-case">
                 <h3>Head case - 65 руб</h3>
-                <button onclick="showInfo('head-case')">Подробнее</button>
+                <button onclick="showModal('head-case')">Подробнее</button>
             </div>
             <div class="package" id="coin-case">
                 <h3>Coin case - 60 руб</h3>
-                <button onclick="showInfo('coin-case')">Подробнее</button>
+                <button onclick="showModal('coin-case')">Подробнее</button>
             </div>
         </section>
 
@@ -182,191 +222,100 @@
 
             <div class="package" id="coin-50">
                 <h3>50 coin - 33 руб</h3>
-                <button onclick="showInfo('coin-50')">Подробнее</button>
+                <button onclick="showModal('coin-50')">Подробнее</button>
             </div>
             <div class="package" id="coin-70">
                 <h3>70 coin - 45 руб</h3>
-                <button onclick="showInfo('coin-70')">Подробнее</button>
+                <button onclick="showModal('coin-70')">Подробнее</button>
             </div>
             <div class="package" id="coin-90">
                 <h3>90 coin - 60 руб</h3>
-                <button onclick="showInfo('coin-90')">Подробнее</button>
+                <button onclick="showModal('coin-90')">Подробнее</button>
             </div>
             <div class="package" id="coin-100">
                 <h3>100 coin - 66 руб</h3>
-                <button onclick="showInfo('coin-100')">Подробнее</button>
+                <button onclick="showModal('coin-100')">Подробнее</button>
             </div>
             <div class="package" id="coin-200">
                 <h3>200 coin - 110 руб</h3>
-                <button onclick="showInfo('coin-200')">Подробнее</button>
+                <button onclick="showModal('coin-200')">Подробнее</button>
             </div>
             <div class="package" id="coin-300">
                 <h3>300 coin - 170 руб</h3>
-                <button onclick="showInfo('coin-300')">Подробнее</button>
+                <button onclick="showModal('coin-300')">Подробнее</button>
             </div>
             <div class="package" id="coin-500">
                 <h3>500 coin - 280 руб</h3>
-                <button onclick="showInfo('coin-500')">Подробнее</button>
+                <button onclick="showModal('coin-500')">Подробнее</button>
             </div>
             <div class="package" id="coin-1000">
                 <h3>1000 coin - 550 руб</h3>
-                <button onclick="showInfo('coin-1000')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-3000">
-                <h3>3000 coin - 1500 руб</h3>
-                <button onclick="showInfo('coin-3000')">Подробнее</button>
+                <button onclick="showModal('coin-1000')">Подробнее</button>
             </div>
         </section>
     </main>
 
     <footer>
-        <button class="buy-button">Купить</button>
+        <p>&copy; 2025 Сайт донатов</p>
     </footer>
 
-    <script>
-        function showInfo(packageId) {
-            const descriptions = {
-                'vlastelin': `
-                    Властелин - 2000 руб
-                    /clear - очистить инвентарь 
-                    /kill - убить себя 
-                    /freegm - выдать другу креатив 
-                    /bonus (раз на 7 дней) - получить уникальный бонус 
-                    /givemoney (50к, каждые 6 часов) - выдать 50000 монет
-                    /stats - проверить статистику 
-                    /saveinv - сохранить инвентарь
-                    /inv list - список сохраненных инвентарей 
-                    /freefly - выдать флай игроку
-                    /effect - выдать эффект 
-                    /grant - выдать другу визера
-                `,
-                'povelitel': `
-                    Повелитель - 1000 руб
-                    /saveinv - сохранить инвентарь 
-                    /inv list - список сохраненных инвентарей 
-                    /freefly - выдать флай игроку
-                    /effect - выдать эффект 
-                    /grant - выдать другу визера
-                `,
-                'fantom': `
-                    Фантом - 899 руб
-                    /ban-ip - заблокировать игрока по айпи
-                    /topmoney - узнать топ по балансу
-                    /setwarp - установить варп
-                    /delwarp - удалить варп
-                `,
-                'imperator': `
-                    Император - 650 руб
-                    /ban - заблокировать игрока на сервере
-                    /unbantime - разблокировать игрока
-                    /skin - украсть скин у игрока
-                    /banlist - список забаненых игроков
-                `,
-                'legenda': `
-                    Легенда - 499 руб
-                    /giveitem - выдать предмет
-                    /bantime - забанить игрока на время
-                    /cc - очистить чат
-                    /unmute - разблокировать игроку чат
-                `,
-                'wither': `
-                    Визер - 289 руб
-                    /gm (0/1/3) - креатив
-                    /repair - починить предмет
-                    /kick - выгнать игрока с сервера
-                    /mute - заблокировать игрока в чате
-                `,
-                'supreme': `
-                    Суприм - 139 руб
-                    /itemid - узнать айди предмета
-                    /xyz - узнать координаты
-                    /jump - подпрыгнуть до небес
-                    /weather - сменить погоду
-                `,
-                'warrior': `
-                    Воин - 69 руб
-                    /fly - режим полета
-                    /feed - поесть
-                    /ec - эндер-сундук
-                `,
-                'donate-case': `
-                    Donate case - 119 руб
-                    1. Воин
-                    2. Суприм
-                    3. Визер
-                    4. Легенда
-                `,
-                'epic-case': `
-                    Epic case - 630 руб
-                    1. Легенда
-                    2. Император
-                    3. Фантом
-                `,
-                'legend-case': `
-                    Legend case - 999 руб
-                    1. Фантом
-                    2. Повелитель
-                    3. Властелин
-                `,
-                'titul-case': `
-                    Titul case - 40 руб
-                    1. Езка
-                    2. PvP
-                    3. Крутой
-                    4. Софт
-                    5. Фермер
-                    6. Богатый
-                    7. Ливер
-                    8. Трапер
-                    9. Таргет
-                    10. 1х3
-                    11. Грифер
-                    12. ZXC
-                    13. GG
-                    14. qq
-                    15. 24/7
-                    16. BAN
-                    17. OLD
-                    18. EZ
-                    19. Skill
-                    20. Absolute
-                `,
-                'magic-case': `
-                    Magic case - 50 руб
-                    1. Rune Speed 1
-                    2. Rune Speed 2
-                    3. Rune Power 1
-                    4. Rune Power 2
-                    5. Rune Fire
-                    6. Rune Jump 1
-                    7. Rune Jump 2
-                    8. Rune Health
-                    9. Rune Invisi
-                `,
-                'head-case': `
-                    Head case - 65 руб
-                    1. Голова зомби
-                    2. Голова крипера
-                    3. Голова дракона
-                    4. Голова визера
-                    5. Голова скелета
-                    6. Голова стива
-                `,
-                'coin-case': `
-                    Coin case - 60 руб
-                    1. 10 Coin
-                    2. 30 Coin
-                    3. 50 Coin
-                    4. 70 Coin
-                    5. 100 Coin
-                    6. 150 Coin
-                    7. 200 Coin
-                    8. 300 Coin
-                `
-            };
+    <!-- Модальные окна -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <button class="buy-button" onclick="buyPackage()">Купить</button>
+        </div>
+    </div>
 
-            alert(descriptions[packageId] || 'Описание не найдено');
+    <script>
+        const descriptions = {
+            'vlastelin': 'Полное описание пакета Властелин...',
+            'povelitel': 'Полное описание пакета Повелитель...',
+            'fantom': 'Полное описание пакета Фантом...',
+            'imperator': 'Полное описание пакета Император...',
+            'legenda': 'Полное описание пакета Легенда...',
+            'wither': 'Полное описание пакета Визер...',
+            'supreme': 'Полное описание пакета Суприм...',
+            'warrior': 'Полное описание пакета Воин...',
+            'donate-case': 'Полное описание кейса Donate...',
+            'epic-case': 'Полное описание кейса Epic...',
+            'legend-case': 'Полное описание кейса Legend...',
+            'titul-case': 'Полное описание кейса Titul...',
+            'magic-case': 'Полное описание кейса Magic...',
+            'head-case': 'Полное описание кейса Head...',
+            'coin-case': 'Полное описание кейса Coin...',
+            'coin-50': '50 монет...',
+            'coin-70': '70 монет...',
+            'coin-90': '90 монет...',
+            'coin-100': '100 монет...',
+            'coin-200': '200 монет...',
+            'coin-300': '300 монет...',
+            'coin-500': '500 монет...',
+            'coin-1000': '1000 монет...'
+        };
+
+        function showModal(packageId) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const packageName = packageId.split('-').join(' ').toUpperCase();
+
+            modalTitle.textContent = packageName;
+            modalDescription.textContent = descriptions[packageId] || 'Описание не найдено';
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function buyPackage() {
+            alert('Вы перешли к покупке!');
+            closeModal();
         }
     </script>
 </body>
 </html>
+
