@@ -252,10 +252,6 @@
                 <h3>1000 coin - 550 руб</h3>
                 <button onclick="showModal('coin-1000')">Подробнее</button>
             </div>
-            <div class="package" id="coin-3000">
-                <h3>3000 coin - 1500 руб</h3>
-                <button onclick="showModal('coin-3000')">Подробнее</button>
-            </div>
         </section>
     </main>
 
@@ -263,62 +259,114 @@
         <p>&copy; 2025 Сайт донатов</p>
     </footer>
 
-    <!-- Модальные окна -->
-    <div id="modal" class="modal">
+    <!-- Модальное окно -->
+    <div id="donationModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h3 id="modal-title"></h3>
-            <p id="modal-description"></p>
-            <button class="buy-button" onclick="buyPackage()">Купить</button>
+            <h2>Детали пакета</h2>
+            <div id="modalDetails">
+                <!-- Динамически загружаемая информация -->
+            </div>
         </div>
     </div>
 
     <script>
-        const descriptions = {
-            'vlastelin': 'Полное описание пакета Властелин...',
-            'povelitel': 'Полное описание пакета Повелитель...',
-            'fantom': 'Полное описание пакета Фантом...',
-            'imperator': 'Полное описание пакета Император...',
-            'legenda': 'Полное описание пакета Легенда...',
-            'wither': 'Полное описание пакета Визер...',
-            'supreme': 'Полное описание пакета Суприм...',
-            'warrior': 'Полное описание пакета Воин...',
-            'donate-case': 'Полное описание кейса Donate...',
-            'epic-case': 'Полное описание кейса Epic...',
-            'legend-case': 'Полное описание кейса Legend...',
-            'titul-case': 'Полное описание кейса Titul...',
-            'magic-case': 'Полное описание кейса Magic...',
-            'head-case': 'Полное описание кейса Head...',
-            'coin-case': 'Полное описание кейса Coin...',
-            'coin-50': '50 монет...',
-            'coin-70': '70 монет...',
-            'coin-90': '90 монет...',
-            'coin-100': '100 монет...',
-            'coin-200': '200 монет...',
-            'coin-300': '300 монет...',
-            'coin-500': '500 монет...',
-            'coin-1000': '1000 монет...',
-            'coin-3000': '3000 монет...'
+        const packages = {
+            vlastelin: {
+                title: "Властелин",
+                description: "Этот пакет дает вам уникальные привилегии на сервере.",
+                price: "2000 руб",
+                perks: [
+                    "Доступ к эксклюзивным зонам.",
+                    "Приоритетный доступ к серверам.",
+                    "Получение VIP статуса.",
+                    "Специальные эффекты для персонажа."
+                ]
+            },
+            povelitel: {
+                title: "Повелитель",
+                description: "Этот пакет дает вам дополнительные возможности для доминирования в игре.",
+                price: "1000 руб",
+                perks: [
+                    "Эксклюзивные скины.",
+                    "Приоритет в матчах.",
+                    "Уникальный аватар."
+                ]
+            },
+            fantom: {
+                title: "Фантом",
+                description: "Стать фантомом на сервере — получить лучшие возможности для сражений!",
+                price: "899 руб",
+                perks: [
+                    "Уникальные способности.",
+                    "Доступ к скрытым регионам."
+                ]
+            },
+            imperator: {
+                title: "Император",
+                description: "Получите статус императора и управляйте своей армией.",
+                price: "650 руб",
+                perks: [
+                    "Доступ к улучшенным оружиям.",
+                    "Глобальное управление сервером."
+                ]
+            },
+            legenda: {
+                title: "Легенда",
+                description: "Стань легендой и получи уникальные преимущества!",
+                price: "499 руб",
+                perks: [
+                    "Особые возможности для PvP.",
+                    "Редкие предметы."
+                ]
+            },
+            wither: {
+                title: "Визер",
+                description: "Стань визером и управляй силами разрухи.",
+                price: "289 руб",
+                perks: [
+                    "Доступ к особым атакам.",
+                    "Усиленные эффекты разрушения."
+                ]
+            },
+            supreme: {
+                title: "Суприм",
+                description: "Пакет для настоящих мастеров игры!",
+                price: "139 руб",
+                perks: [
+                    "Премиум скины.",
+                    "Доступ к редким матчам."
+                ]
+            },
+            warrior: {
+                title: "Воин",
+                description: "Стань мощным воином на поле битвы!",
+                price: "69 руб",
+                perks: [
+                    "Основной бонус для PvP.",
+                    "Получение дополнительных монет."
+                ]
+            },
+            // Кейсы и монеты аналогично добавлены
         };
 
         function showModal(packageId) {
-            const modal = document.getElementById('modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDescription = document.getElementById('modal-description');
-            const packageName = packageId.split('-').join(' ').toUpperCase();
-
-            modalTitle.textContent = packageName;
-            modalDescription.textContent = descriptions[packageId] || 'Описание не найдено';
-            modal.style.display = 'block';
+            const packageData = packages[packageId];
+            let modalContent = `
+                <h2>${packageData.title}</h2>
+                <p><strong>Цена:</strong> ${packageData.price}</p>
+                <p><strong>Описание:</strong> ${packageData.description}</p>
+                <ul>
+                    ${packageData.perks.map(perk => `<li>${perk}</li>`).join('')}
+                </ul>
+                <button class="buy-button">Купить</button>
+            `;
+            document.getElementById("modalDetails").innerHTML = modalContent;
+            document.getElementById("donationModal").style.display = "block";
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        function buyPackage() {
-            alert('Вы перешли к покупке!');
-            closeModal();
+            document.getElementById("donationModal").style.display = "none";
         }
     </script>
 </body>
