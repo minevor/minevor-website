@@ -112,74 +112,109 @@
         </div>
     </header>
 
+    <!-- Секция доступных пакетов доната -->
     <section id="donate-packages">
         <h2>Доступные пакеты доната</h2>
         <div class="donation-packages-container">
+            <!-- Пакет "Властелин" -->
             <div class="package" id="vlastelin">
                 <h3>Властелин - 2000 руб</h3>
                 <ul>
                     <li>/clear - очистить инвентарь</li>
                     <li>/kill - убить себя</li>
                     <li>/freegm - выдать другу креатив</li>
-                    <!-- Остальные команды... -->
+                    <li>/bonus - получить уникальный бонус раз в 7 дней</li>
+                    <li>/givemoney - выдать 50000 монет каждые 6 часов</li>
+                    <li>/stats - проверить статистику</li>
                 </ul>
                 <button class="donate-btn" onclick="donate('vlastelin')">Пожертвовать</button>
             </div>
 
+            <!-- Пакет "Повелитель" -->
             <div class="package" id="povelitel">
                 <h3>Повелитель - 1000 руб</h3>
                 <ul>
                     <li>/saveinv - сохранить инвентарь</li>
                     <li>/inv list - список сохраненных инвентарей</li>
-                    <!-- Остальные команды... -->
+                    <li>/freefly - выдать флай игроку</li>
+                    <li>/effect - выдать эффект</li>
+                    <li>/grant - выдать другу визера</li>
                 </ul>
                 <button class="donate-btn" onclick="donate('povelitel')">Пожертвовать</button>
             </div>
 
-            <!-- Другие пакеты... -->
-        </div>
-    </section>
-
-    <section id="cases">
-        <h2>Кейсы</h2>
-        <div class="case-container">
-            <div class="case" id="donate-case">
-                <h3>Donate Case - 119 руб</h3>
-                <p>Содержимое:</p>
+            <!-- Пакет "Фантом" -->
+            <div class="package" id="fantom">
+                <h3>Фантом - 899 руб</h3>
                 <ul>
-                    <li>Воин</li>
-                    <li>Суприм</li>
-                    <li>Визер</li>
-                    <li>Легенда</li>
+                    <li>/ban-ip - заблокировать игрока по айпи</li>
+                    <li>/topmoney - узнать топ по балансу</li>
+                    <li>/setwarp - установить варп</li>
+                    <li>/delwarp - удалить варп</li>
+                    <li>/ban - заблокировать игрока на сервере</li>
                 </ul>
-                <button class="donate-btn" onclick="donate('donate-case')">Купить</button>
+                <button class="donate-btn" onclick="donate('fantom')">Пожертвовать</button>
             </div>
 
-            <div class="case" id="epic-case">
-                <h3>Epic Case - 630 руб</h3>
-                <p>Содержимое:</p>
+            <!-- Пакет "Император" -->
+            <div class="package" id="imperator">
+                <h3>Император - 650 руб</h3>
                 <ul>
-                    <li>Легенда</li>
-                    <li>Император</li>
-                    <li>Фантом</li>
+                    <li>/ban - заблокировать игрока на сервере</li>
+                    <li>/unbantime - разблокировать игрока</li>
+                    <li>/skin - украсть скин у игрока</li>
+                    <li>/banlist - список забаненных игроков</li>
+                    <li>/pickup - настроить подбор ресурсов</li>
                 </ul>
-                <button class="donate-btn" onclick="donate('epic-case')">Купить</button>
+                <button class="donate-btn" onclick="donate('imperator')">Пожертвовать</button>
             </div>
 
-            <!-- Другие кейсы... -->
-        </div>
-    </section>
+            <!-- Пакет "Легенда" -->
+            <div class="package" id="legenda">
+                <h3>Легенда - 499 руб</h3>
+                <ul>
+                    <li>/giveitem - выдать предмет</li>
+                    <li>/bantime - забанить игрока на время</li>
+                    <li>/cc - очистить чат</li>
+                    <li>/unmute - разблокировать игрока в чате</li>
+                    <li>/time - менять время суток (день/ночь)</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('legenda')">Пожертвовать</button>
+            </div>
 
-    <footer>
-        <p>© 2025 Minevor - Все права защищены</p>
-    </footer>
+            <!-- Пакет "Визер" -->
+            <div class="package" id="wither">
+                <h3>Визер - 289 руб</h3>
+                <ul>
+                    <li>/gm (0/1/3) - креатив</li>
+                    <li>/repair - починить предмет</li>
+                    <li>/kick - выгнать игрока с сервера</li>
+                    <li>/mute - заблокировать игрока в чате</li>
+                    <li>/itemid - узнать айди предмета</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('wither')">Пожертвовать</button>
+            </div>
 
-    <script>
-        function donate(packageName) {
-            // Замените этот код на обработку запроса с оплатой через Enot.io
-            alert('Вы выбрали пакет: ' + packageName);
-        }
-    </script>
-</body>
+            <!-- Пакет "Суприм" -->
+            <div class="package" id="supreme">
+                <h3>Суприм - 139 руб</h3>
+                <ul>
+                    <li>/itemid - узнать айди предмета</li>
+                    <li>/xyz - узнать координаты</li>
+                    <li>/jump - подпрыгнуть до небес</li>
+                    <li>/weather - сменить погоду</li>
+                    <li>/fly - режим полета</li>
+                </ul>
+                <button class="donate-btn" onclick="donate('supreme')">Пожертвовать</button>
+            </div>
 
-</html>
+            <!-- Пакет "Воин" -->
+            <div class="package" id="voin">
+                <h3>Воин - 69 руб</h3>
+                <ul>
+                    <li>/fly - режим полета</li>
+                    <li>/feed - поесть</li>
+                    <li>/ec - эндер-сундук</li>
+                    <li>/seemoney - посмотреть баланс игрока</li>
+                </ul>
+                <butt
