@@ -14,6 +14,11 @@
       background-color: #fff; padding: 15px; margin: 10px;
       border: 1px solid #ddd; border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; width: 22%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .package:hover {
+      transform: scale(1.05);
     }
     button {
       background-color: #4CAF50; color: white;
@@ -70,31 +75,7 @@
       <div id="modalDetails"></div>
     </div>
   </div>
-  <script>
-    function closeModal() {
-      document.getElementById("donationModal").style.display = "none";
-    }
-    function showModal(id) {
-      const p = packages[id];
-      let html = "<h2>" + p.title + "</h2>";
-      html += "<p><strong>Цена:</strong> " + p.price + "</p>";
-      html += "<p>" + p.description + "</p>";
-      if (p.perks) {
-        html += "<h3>Преимущества:</h3><ul>" + p.perks.map(i => "<li>" + i + "</li>").join("") + "</ul>";
-      }
-      if (p.commands) {
-        html += "<h3>Команды:</h3><ul>" + p.commands.map(i => "<li>" + i + "</li>").join("") + "</ul>";
-      }
-      if (p.contents) {
-        html += "<h3>Содержимое:</h3><ul>" + p.contents.map(i => "<li>" + i + "</li>").join("") + "</ul>";
-      }
-      html += '<button class="buy-button">Купить</button>';
-      document.getElementById("modalDetails").innerHTML = html;
-      document.getElementById("donationModal").style.display = "block";
-    }
-
-    // Здесь будет вставлен полный объект packages
-  </script>
+ 
 
 <script>
   function closeModal() {
@@ -120,7 +101,7 @@
     document.getElementById("donationModal").style.display = "block";
   }
 
-      const packages = {
+  const packages = {
     warrior: {
       title: "Воин",
       price: "69 руб",
@@ -322,9 +303,58 @@
       contents: ["3000 монет"]
     }
   };
+
+  // Функция создания карточки
+  function createCard(id, data) {
+    const div = document.createElement("div");
+    div.className = "package";
+    div.onclick = () => showModal(id);
+    div.innerHTML = `
+      <h3>${data.title}</h3>
+      <p><strong>Цена:</strong> ${data.price || "—"}</p>
+      <p>${data.description || ""}</p>
+    `;
+    return div;
+  }
+
+  // Функция для рендеринга карточек по категориям
+  function renderPackages() {
+    const donationContainer = document.querySelector(".donation-packages");
+    const caseContainer = document.querySelector(".case-packages");
+    const coinContainer = document.querySelector(".coin-packages");
+
+    // Добавим заголовки к секциям, если надо
+    if (donationContainer) {
+      donationContainer.innerHTML = "<h2>Донаты</h2>";
+    }
+    if (caseContainer) {
+      caseContainer.innerHTML = "<h2>Кейсы</h2>";
+    }
+    if (coinContainer) {
+      coinContainer.innerHTML = "<h2>Монеты</h2>";
+    }
+
+    for (const [id, data] of Object.entries(packages)) {
+      // Определим тип пакета
+      // Донаты - у которых есть commands (без contents)
+      // Кейсы - у которых есть contents
+      // Монеты - в названии id содержит "coin" (но без contents)
+      if (data.contents) {
+        // Кейсы
+        caseContainer.appendChild(createCard(id, data));
+      } else if (id.includes("coin")) {
+        // Монеты
+        coinContainer.appendChild(createCard(id, data));
+      } else if (data.commands) {
+        // Донаты
+        donationContainer.appendChild(createCard(id, data));
+      }
+    }
+  }
+
+  // Запускаем отрисовку карточек при загрузке страницы
+  window.onload = renderPackages;
 </script>
-
-
 
 </body>
 </html>
