@@ -1,639 +1,128 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт донатов</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .package {
-            background-color: #fff;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .buy-button {
-            background-color: #ff5722;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .buy-button:hover {
-            background-color: #e64a19;
-        }
-
-        .case-packages, .coin-packages {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .package {
-            width: 22%;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .package {
-                width: 45%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .package {
-                width: 90%;
-            }
-        }
-
-        /* Модальное окно */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            right: 25px;
-            top: 0;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сайт донатов</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    header { background-color: #333; color: white; text-align: center; padding: 20px; }
+    main { padding: 20px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 24px; margin-bottom: 10px; }
+    .package {
+      background-color: #fff; padding: 15px; margin: 10px;
+      border: 1px solid #ddd; border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; width: 22%;
+    }
+    button {
+      background-color: #4CAF50; color: white;
+      padding: 10px 20px; border: none;
+      border-radius: 5px; cursor: pointer;
+    }
+    button:hover { background-color: #45a049; }
+    footer { text-align: center; margin-top: 20px; }
+    .buy-button {
+      background-color: #ff5722; color: white;
+      padding: 10px 20px; border: none;
+      border-radius: 5px; cursor: pointer;
+    }
+    .buy-button:hover { background-color: #e64a19; }
+    .case-packages, .coin-packages, .donation-packages {
+      display: flex; flex-wrap: wrap; justify-content: space-around;
+    }
+    @media (max-width: 768px) { .package { width: 45%; } }
+    @media (max-width: 480px) { .package { width: 90%; } }
+    .modal {
+      display: none; position: fixed; z-index: 10;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto; background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fff; margin: 5% auto; padding: 20px;
+      border: 1px solid #888; width: 80%;
+      max-width: 600px; border-radius: 10px;
+    }
+    .close {
+      color: #aaa; font-size: 28px; font-weight: bold; float: right;
+    }
+    .close:hover, .close:focus {
+      color: black; text-decoration: none; cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Сайт донатов</h1>
-    </header>
-
-    <main>
-        <section class="donation-packages">
-            <h2>Донат пакеты</h2>
-
-            <div class="package" id="vlastelin">
-                <h3>Властелин - 2000 руб</h3>
-                <button onclick="showModal('vlastelin')">Подробнее</button>
-            </div>
-            <div class="package" id="povelitel">
-                <h3>Повелитель - 1000 руб</h3>
-                <button onclick="showModal('povelitel')">Подробнее</button>
-            </div>
-            <div class="package" id="fantom">
-                <h3>Фантом - 899 руб</h3>
-                <button onclick="showModal('fantom')">Подробнее</button>
-            </div>
-            <div class="package" id="imperator">
-                <h3>Император - 650 руб</h3>
-                <button onclick="showModal('imperator')">Подробнее</button>
-            </div>
-            <div class="package" id="legenda">
-                <h3>Легенда - 499 руб</h3>
-                <button onclick="showModal('legenda')">Подробнее</button>
-            </div>
-            <div class="package" id="wither">
-                <h3>Визер - 289 руб</h3>
-                <button onclick="showModal('wither')">Подробнее</button>
-            </div>
-            <div class="package" id="supreme">
-                <h3>Суприм - 139 руб</h3>
-                <button onclick="showModal('supreme')">Подробнее</button>
-            </div>
-            <div class="package" id="warrior">
-                <h3>Воин - 69 руб</h3>
-                <button onclick="showModal('warrior')">Подробнее</button>
-            </div>
-        </section>
-
-        <section class="case-packages">
-            <h2>Кейсы</h2>
-
-            <div class="package" id="donate-case">
-                <h3>Donate case - 119 руб</h3>
-                <button onclick="showModal('donate-case')">Подробнее</button>
-            </div>
-            <div class="package" id="epic-case">
-                <h3>Epic case - 630 руб</h3>
-                <button onclick="showModal('epic-case')">Подробнее</button>
-            </div>
-            <div class="package" id="legend-case">
-                <h3>Legend case - 999 руб</h3>
-                <button onclick="showModal('legend-case')">Подробнее</button>
-            </div>
-            <div class="package" id="titul-case">
-                <h3>Titul case - 40 руб</h3>
-                <button onclick="showModal('titul-case')">Подробнее</button>
-            </div>
-            <div class="package" id="magic-case">
-                <h3>Magic case - 50 руб</h3>
-                <button onclick="showModal('magic-case')">Подробнее</button>
-            </div>
-            <div class="package" id="head-case">
-                <h3>Head case - 65 руб</h3>
-                <button onclick="showModal('head-case')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-case">
-                <h3>Coin case - 60 руб</h3>
-                <button onclick="showModal('coin-case')">Подробнее</button>
-            </div>
-        </section>
-
-        <section class="coin-packages">
-            <h2>Монеты</h2>
-
-            <div class="package" id="coin-50">
-                <h3>50 coin - 33 руб</h3>
-                <button onclick="showModal('coin-50')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-70">
-                <h3>70 coin - 45 руб</h3>
-                <button onclick="showModal('coin-70')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-90">
-                <h3>90 coin - 60 руб</h3>
-                <button onclick="showModal('coin-90')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-100">
-                <h3>100 coin - 66 руб</h3>
-                <button onclick="showModal('coin-100')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-200">
-                <h3>200 coin - 110 руб</h3>
-                <button onclick="showModal('coin-200')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-300">
-                <h3>300 coin - 170 руб</h3>
-                <button onclick="showModal('coin-300')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-500">
-                <h3>500 coin - 280 руб</h3>
-                <button onclick="showModal('coin-500')">Подробнее</button>
-            </div>
-            <div class="package" id="coin-1000">
-                <h3>1000 coin - 500 руб</h3>
-                <button onclick="showModal('coin-1000')">Подробнее</button>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Сайт донатов</p>
-    </footer>
-
-    <!-- Модальное окно -->
-    <div id="donationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Детали пакета</h2>
-            <div id="modalDetails">
-                <!-- Динамически загружаемая информация -->
-            </div>
-        </div>
+  <header>
+    <h1>Сайт донатов</h1>
+  </header>
+  <main>
+    <div class="donation-packages"></div>
+    <div class="case-packages"></div>
+    <div class="coin-packages"></div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Сайт донатов</p>
+  </footer>
+  <div id="donationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalDetails"></div>
     </div>
+  </div>
+  <script>
+    function closeModal() {
+      document.getElementById("donationModal").style.display = "none";
+    }
+    function showModal(id) {
+      const p = packages[id];
+      let html = "<h2>" + p.title + "</h2>";
+      html += "<p><strong>Цена:</strong> " + p.price + "</p>";
+      html += "<p>" + p.description + "</p>";
+      if (p.perks) {
+        html += "<h3>Преимущества:</h3><ul>" + p.perks.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+      }
+      if (p.commands) {
+        html += "<h3>Команды:</h3><ul>" + p.commands.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+      }
+      if (p.contents) {
+        html += "<h3>Содержимое:</h3><ul>" + p.contents.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+      }
+      html += '<button class="buy-button">Купить</button>';
+      document.getElementById("modalDetails").innerHTML = html;
+      document.getElementById("donationModal").style.display = "block";
+    }
 
-    <script>
-        const packages = {
-            // Пакеты донатов
-            vlastelin: {
-                title: "Властелин",
-                description: "Этот пакет дает вам уникальные возможности на сервере.",
-                price: "2000 руб",
-                perks: [
-                    "вам доступно ВСЕ!"
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате",
-                    "/giveitem - выдать предмет", "/bantime - забанить игрока на время",
-                    "/cc - очистить чат", "/unmute - разблокировать игроку чат",
-                    "/time - менять время суток (день/ночь)", "/teleport - телепортироваться к игроку",
-                    "/ban - заблокировать игрока на сервере", "/unbantime - разблокировать игрока",
-                    "/skin - украсть скин у игрока", "/banlist - список забаненых игроков",
-                    "/pickup - настроить подбор ресурсов ", "/unban - разблокировать игрока на сервере",
-                    "/ban-ip - заблокировать игрока по айпи", "/topmoney - узнать топ по балансу",
-                    "/setwarp - установить варп", "/delwarp - удалить варп",
-                    "/saveinv - сохранить инвентарь", "/inv list - список сохраненных инвентарей",
-                    "/freefly - выдать флай игроку", "/effect - выдать эффект",
-                    "/clear - очистить инвентарь", "/kill - убить себя",
-                    "/freegm - выдать другу креатив", "/bonus (раз на 7 дней) - получить уникальный бонус",
-                    "/givemoney (50к, каждые 6 часов) - выдать 50000 монет", "/stats - проверить статистику",
-                    "/grant - выдать другу легенда)"
-                ]
-            },
-            povelitel: {
-                title: "Повелитель",
-                description: "Этот донат дает вам дополнительные возможности для доминирования в игре.",
-                price: "1000 руб",
-                perks: [ 
-                    "Приоритет в матчах."
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате",
-                    "/giveitem - выдать предмет", "/bantime - забанить игрока на время",
-                    "/cc - очистить чат", "/unmute - разблокировать игроку чат",
-                    "/time - менять время суток (день/ночь)", "/teleport - телепортироваться к игроку",
-                    "/ban - заблокировать игрока на сервере", "/unbantime - разблокировать игрока",
-                    "/skin - украсть скин у игрока", "/banlist - список забаненых игроков",
-                    "/pickup - настроить подбор ресурсов ", "/unban - разблокировать игрока на сервере",
-                    "/ban-ip - заблокировать игрока по айпи", "/topmoney - узнать топ по балансу",
-                    "/setwarp - установить варп", "/delwarp - удалить варп",
-                    "/saveinv - сохранить инвентарь", "/inv list - список сохраненных инвентарей",
-                    "/freefly - выдать флай игроку", "/effect - выдать эффект",
-                    "/grant - выдать другу визера)"
+    // Здесь будет вставлен полный объект packages
+  </script>
 
-                ]
-            },
-            fantom: {
-                title: "Фантом",
-                description: "Стать фантомом на сервере — получить лучшие возможности для сражений!",
-                price: "899 руб",
-                perks: [
-                    "Уникальные способности."                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате",
-                    "/giveitem - выдать предмет", "/bantime - забанить игрока на время",
-                    "/cc - очистить чат", "/unmute - разблокировать игроку чат",
-                    "/time - менять время суток (день/ночь)", "/teleport - телепортироваться к игроку",
-                    "/ban - заблокировать игрока на сервере", "/unbantime - разблокировать игрока",
-                    "/skin - украсть скин у игрока", "/banlist - список забаненых игроков",
-                    "/pickup - настроить подбор ресурсов ", "/unban - разблокировать игрока на сервере",
-                    "/ban-ip - заблокировать игрока по айпи", "/topmoney - узнать топ по балансу",
-                    "/setwarp - установить варп", "/delwarp - удалить варп"
-                ]
-            },
-            imperator: {
-                title: "Император",
-                description: "Получите статус императора и управляйте своей армией.",
-                price: "650 руб",
-                perks: [
-                    "Глобальное превосходство над сервером."
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате",
-                    "/giveitem - выдать предмет", "/bantime - забанить игрока на время",
-                    "/cc - очистить чат", "/unmute - разблокировать игроку чат",
-                    "/time - менять время суток (день/ночь)", "/teleport - телепортироваться к игроку",
-                    "/ban - заблокировать игрока на сервере", "/unbantime - разблокировать игрока",
-                    "/skin - украсть скин у игрока", "/banlist - список забаненых игроков",
-                    "/pickup - настроить подбор ресурсов ", "/unban - разблокировать игрока на сервере"
-                ]
-            },
-            legenda: {
-                title: "Легенда",
-                description: "Стань легендой и получи уникальные преимущества!",
-                price: "499 руб",
-                perks: 
-                    "покажи насколько легендарней других"
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате",
-                    "/giveitem - выдать предмет", "/bantime - забанить игрока на время",
-                    "/cc - очистить чат", "/unmute - разблокировать игроку чат",
-                    "/time - менять время суток (день/ночь)", "/teleport - телепортироваться к игроку"
-                ]
-            },
-            wither: {
-                title: "Визер",
-                description: "Стань визером и управляй силами разрухи.",
-                price: "289 руб",
-                perks: [
-                    "Доступ к креативу!"
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду",
-                    "/gm (0/1/3) - креатив", "/repair - починить предмет",
-                    "/kick - выгнать игрока с сервера", "/mute - заблокировать игрока в чате"
-                ]
-            },
-            supreme: {
-                title: "Суприм",
-                description: "Пакет для настоящих мастеров игры!",
-                price: "139 руб",
-                perks: [
-                    "для тех кто прошарился"
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/itemid - узнать айди предмета", "/xyz - узнать координаты",
-                    "/jump - подпрыгнуть до небес", "/weather - сменить погоду"
-                ]
-            },
-            warrior: {
-                title: "Воин",
-                description: "Стань мощным воином на поле битвы!",
-                price: "69 руб",
-                perks: [
-                    "лучший донат для новичка!"
-                ],
-                commands: [
-                    "/fly - режим полета", "/feed - поесть)",
-                    "/ec - эндер-сундук", "/seemoney - посмотреть баланс игрока",
-                    "/kit voin - кит воина"
-                ]
-            },
+<script>
+  function closeModal() {
+    document.getElementById("donationModal").style.display = "none";
+  }
 
-            // Кейсы
-            "donate-case": {
-                title: "Donate case",
-                description: "это самый дешевый но ценный кейс с донатамы",
-                price: "119 руб",
-                contents: [
-                    "воин",
-                    "суприм",
-                    "визер",
-                    "легенда"
-                ]
-            },
-            "epic-case": {
-                title: "Epic case",
-                description: "100% окуп",
-                price: "630 руб",
-                contents: [
-                    "легенда",
-                    "император",
-                    "фантом"
-                ]
-            },
-            "legend-case": {
-                title: "Legend case",
-                description: "Кейс с которого можно выбить 3 лучший донага на сервере!",
-                price: "999 руб",
-                contents: [
-                    "ФАНТОМ",
-                    "ПОВЕЛИТЕЛЬ",
-                    "ВЛАСТЕЛИН"
-                ]
-            },
-            "titul-case": {
-                title: "Titul case",
-                description: "с этого кейса можно выбить лучшие титулы на сервере",
-                price: "40 руб",
-                contents: [
-                    "езка",
-                    "PvP",
-                    "крутой",
-                    "софт",
-                    "фермер",
-                    "богатый",
-                    "ливер",
-                    "трапер",
-                    "таргет",
-                    "1х3",
-                    "грифер",
-                    "ZXC",
-                    "GG",
-                    "qq",
-                    "24/7",
-                    "BAN",
-                    "OLD",
-                    "EZ",
-                    "SKILL",
-                    "absolute"
+  function showModal(id) {
+    const p = packages[id];
+    let html = "<h2>" + p.title + "</h2>";
+    html += "<p><strong>Цена:</strong> " + p.price + "</p>";
+    html += "<p>" + p.description + "</p>";
+    if (p.perks) {
+      html += "<h3>Преимущества:</h3><ul>" + p.perks.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+    }
+    if (p.commands) {
+      html += "<h3>Команды:</h3><ul>" + p.commands.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+    }
+    if (p.contents) {
+      html += "<h3>Содержимое:</h3><ul>" + p.contents.map(i => "<li>" + i + "</li>").join("") + "</ul>";
+    }
+    html += '<button class="buy-button">Купить</button>';
+    document.getElementById("modalDetails").innerHTML = html;
+    document.getElementById("donationModal").style.display = "block";
+  }
 
+  const packages = 
 
+</script>
 
-                ]
-            },
-            "magic-case": {
-                title: "Magic case",
-                description: "Получаете шанс выбить лучшие руны",
-                price: "50 руб",
-                contents: [
-                    "rune speed 1",
-                    "rune speed 2",
-                    "rune power 1",
-                    "rune power 2",
-                    "rune fire",
-                    "rune jump 1",
-                    "rune jump 2",
-                    "rune health",
-                    "rune invis"
-
-                ]
-            },
-            "head-case": {
-                title: "Head case",
-                description: "Уникальный кейс с головами",
-                price: "65 руб",
-                contents: [
-                    "голова зомби",
-                    "голова крипера",
-                    "голова дракона",
-                    "голова визера",
-                    "голова скелета",
-                    "голова стива"
-                ]
-            },
-            "coin-case": {
-                title: "Coin case",
-                description: "Получите шанс выиграть монеты.",
-                price: "60 руб",
-                contents: [
-                    "10 коинов",
-                    "30 коинов",
-                    "50 коинов",
-                    "70 коинов",
-                    "100 монет",
-                    "150 коинов",
-                    "200 коинов",
-                    "300 коинов"
-                ]
-            },
-
-            // Монеты
-            "coin-50": {
-                title: "50 coin",
-                description: "50 коинов на твой аккаунт.",
-                price: "33 руб",
-                contents: [
-                    "50 монет"
-                ]
-            },
-            "coin-70": {
-                title: "70 coin",
-                description: "70 коинов на твой аккаунт.",
-                price: "45 руб",
-                contents: [
-                    "70 монет"
-                ]
-            },
-            "coin-90": {
-                title: "90 coin",
-                description: "90 коинов на твой аккаунт.",
-                price: "60 руб",
-                contents: [
-                    "90 монет"
-                ]
-            },
-            "coin-100": {
-                title: "100 coin",
-                description: "100 коинов на твой аккаунт.",
-                price: "66 руб",
-                contents: [
-                    "100 монет"
-                ]
-            },
-            "coin-200": {
-                title: "200 coin",
-                description: "200 коинов на твой аккаунт.",
-                price: "110 руб",
-                contents: [
-                    "200 монет"
-                ]
-            },
-            "coin-300": {
-                title: "300 coin",
-                description: "300 коинов на твой аккаунт.",
-                price: "170 руб",
-                contents: [
-                    "300 монет"
-                ]
-            },
-            "coin-500": {
-                title: "500 coin",
-                description: "500 коинов на твой аккаунт",
-                price: "280 руб",
-                contents: [
-                    "500 монет"
-                ]
-            },
-            "coin-1000": {
-                title: "1000 coin",
-                description: "1000 коинов на твой аккаунт",
-                price: "500 руб",
-                contents: [
-                    "1000 монет"
-                ]
-            }
-        };
-
-        function showModal(packageId) {
-            const packageData = packages[packageId];
-            let modalContent = `
-                <h2>${packageData.title}</h2>
-                <p><strong>Цена:</strong> ${packageData.price}</p>
-                <p><strong>Описание:</strong> ${packageData.description}</p>
-                <ul>
-                    ${packageData.perks ? packageData.perks.map(perk => `<li>${perk}</li>`).join('') : ''}
-                    ${packageData.contents ? `<li><strong>Содержимое:</strong></li><ul>${packageData.contents.map(content => `<li>${content}</li>`).join('')}</ul>` : ''}
-                </ul>
-                ${packageData.commands ? `<h3>Доступные команды:</h3><ul>${packageData.commands.map(command => `<li>${command}</li>`).join('')}</ul>` : ''}
-                <button class="buy-button">Купить</button>
-            `;
-            document.getElementById("modalDetails").innerHTML = modalContent;
-            document.getElementById("donationModal").style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById("donationModal").style.display = "none";
-        }
-    </script>
 </body>
 </html>
